@@ -50,7 +50,11 @@ D: Draw
 '''
 
 st.title('La Liga match results')
-df = pd.read_csv("/Users/romacencerradorubio/Desktop/MLprojects/laligacampeones/LaLiga.csv")
+#df = pd.read_csv("/Users/romacencerradorubio/Desktop/MLprojects/laligacampeones/LaLiga.csv")
+url= "https://raw.githubusercontent.com/Roma-Rubio/LaLiga_heroku/master/LaLiga.csv"
+df = pd.read_csv("https://raw.githubusercontent.com/Roma-Rubio/LaLiga_heroku/master/LaLiga.csv",sep=",")
+
+
 
 if st.checkbox('Show all data'):
     st.write(df)
