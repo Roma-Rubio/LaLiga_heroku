@@ -1,4 +1,3 @@
-#%%
 import pandas as pd 
 df = pd.read_csv("/Users/romacencerradorubio/Desktop/MLprojects/laligacampeones/LaLiga.csv") 
 print(df.head())
