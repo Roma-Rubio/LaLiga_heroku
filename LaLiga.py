@@ -1,9 +1,16 @@
 # %%
 
-
 import pandas as pd 
-df = pd.read_csv("/Users/romacencerradorubio/Desktop/MLprojects/laligacampeones/LaLiga.csv") 
+
+url= "https://raw.githubusercontent.com/Roma-Rubio/LaLiga_heroku/master/LaLiga.csv"
+df = pd.read_csv("https://raw.githubusercontent.com/Roma-Rubio/LaLiga_heroku/master/LaLiga.csv",sep=",")
 print(df.head())
+
+
+
+#import pandas as pd 
+#df = pd.read_csv("/Users/romacencerradorubio/Desktop/MLprojects/laligacampeones/LaLiga.csv") 
+#print(df.head())
 
 import streamlit as st
 import pandas as pd
