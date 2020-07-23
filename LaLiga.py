@@ -108,3 +108,42 @@ st.write(comparision2)
 
 
 # %%
+
+wins_h = 0
+losses_h = 0
+draw_h = 0
+wins_a = 0
+losses_a = 0
+draw_a = 0
+for i in range(len(new_df_wins)):
+    if new_df_wins['HomeTeam'][i]==team_wins:
+        if new_df_wins['FTHG'][i]>new_df_wins['FTAG'][i]:
+            wins_h+=1
+        elif new_df_wins['FTHG'][i]<new_df_wins['FTAG'][i]:
+            losses_h+=1
+        else:
+            draw_h+=1
+for i in range(len(new_df_wins)):
+    if not new_df_wins['HomeTeam'][i]==team_wins:
+        if new_df_wins['FTHG'][i]<new_df_wins['FTAG'][i]:
+            wins_a+=1
+        elif new_df_wins['FTHG'][i]>new_df_wins['FTAG'][i]:
+            losses_a+=1
+        else:
+            draw_a +=1
+values_home = [wins_h, losses_h, draw_h]
+values_away = [wins_a, losses_a, draw_a]
+#colors = ['gold', 'mediumturquoise', 'darkorange']
+fig3 = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
+fig3.add_trace(go.Pie(labels=labels, values=values_home, name="Home"),
+              1, 1)
+fig3.add_trace(go.Pie(labels=labels, values=values_away, name="Away"),
+              1, 2)
+fig3.update_layout(
+    title_text="% of match results: wins, losses and draws",
+    annotations=[dict(text='Home', x=0.18, y=0.5, font_size=20, showarrow=False),
+                 dict(text='Away', x=0.82, y=0.5, font_size=20, showarrow=False)])
+
+colors =['lightpink','lightgreen','lightyellow']
+fig3.update_traces(hole=.6,hoverinfo="label+percent+name",marker=dict(colors=colors))
+
