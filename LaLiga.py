@@ -14,7 +14,7 @@ print(df.head())
 
 import streamlit as st
 import pandas as pd
-import numpy 
+import numpy as np
 import plotly.express as px
 import seaborn as sns
 import matplotlib.pyplot as plt
