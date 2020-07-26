@@ -6,12 +6,6 @@ url= "https://raw.githubusercontent.com/Roma-Rubio/LaLiga_heroku/master/LaLiga.c
 df = pd.read_csv("https://raw.githubusercontent.com/Roma-Rubio/LaLiga_heroku/master/LaLiga.csv",sep=",")
 print(df.head())
 
-
-
-#import pandas as pd 
-#df = pd.read_csv("/Users/romacencerradorubio/Desktop/MLprojects/laligacampeones/LaLiga.csv") 
-#print(df.head())
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -21,40 +15,19 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-'''
-Season - period of the match
 
-Date - date of the match
+from PIL import Image
+image = Image.open("stadium.png")
+#"File-Santiago Bernabeu Stadium - panoramio.jpg" by AudaCity3371 is licensed under CC BY-SA 3.0
+st.image(image, caption='',
+          use_column_width=True)
+#la imagen tiene que estar guardada en la misma carpeta que el python, en este caso esta en el folder
+#de heroku que esta en el escritorio
 
-HomeTeam - the name of the home team
 
-AwayTeam - the name of the away team
 
-FTHG (Full-time home goals) 
-
-FTAG (Full time away goals)
-
-FTR (Full-time result)
-H: Home team won
-A: Away team won
-D: Draw
-
-HTHG (Half time home goals)
-
-HTAG (Half time away goals) 
-
-HTR (half time result)
-H: Home team won
-A: Away team won
-D: Draw
-'''
-
-st.title('La Liga match results')
-#df = pd.read_csv("/Users/romacencerradorubio/Desktop/MLprojects/laligacampeones/LaLiga.csv")
-url= "https://raw.githubusercontent.com/Roma-Rubio/LaLiga_heroku/master/LaLiga.csv"
+st.title('La Liga de Campeones results')
 df = pd.read_csv("https://raw.githubusercontent.com/Roma-Rubio/LaLiga_heroku/master/LaLiga.csv",sep=",")
-
-
 
 if st.checkbox('Show dataframe'):
     st.write(df)
@@ -77,6 +50,7 @@ events = st.multiselect('Pick your season', df['Season'].unique())
 new_df_season = new_df[(new_df['Season'].isin(events))]
 st.write(new_df_season)
 st.write(new_df)
+
 
 
 st.subheader('Choose a team to see their performance classification')
