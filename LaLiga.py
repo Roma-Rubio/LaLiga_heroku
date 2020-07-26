@@ -16,11 +16,11 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-from PIL import Image
-image = Image.open("stadium.png")
+#from PIL import Image
+#image = Image.open("stadium.png")
 #"File-Santiago Bernabeu Stadium - panoramio.jpg" by AudaCity3371 is licensed under CC BY-SA 3.0
-st.image(image, caption='',
-          use_column_width=True)
+#st.image(image, caption='',
+#          use_column_width=True)
 #la imagen tiene que estar guardada en la misma carpeta que el python, en este caso esta en el folder
 #de heroku que esta en el escritorio
 
