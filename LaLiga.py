@@ -1,6 +1,5 @@
 # %%
 
-PEOPLE = ["bowtie"]
 import pandas as pd 
 
 url= "https://raw.githubusercontent.com/Roma-Rubio/LaLiga_heroku/master/LaLiga.csv"
@@ -26,35 +25,62 @@ from plotly.subplots import make_subplots
 #de heroku que esta en el escritorio
 
 
+st.title('LaLiga web app results')
+st.markdown("""
+This web app allows to summarize and filter information about football matches 
+results from every La Liga match from 1995-1996 to 2019-2020, and provide a simple view of league results 
+for the selected teams by the user.
 
-st.title('La Liga de Campeones results')
-df = pd.read_csv("https://raw.githubusercontent.com/Roma-Rubio/LaLiga_heroku/master/LaLiga.csv",sep=",")
+The app contains the following features:
 
-if st.checkbox('Show dataframe'):
+- Season - period of the match
+- Date - date of the match
+- HomeTeam - the name of the home team
+- AwayTeam - the name of the away team
+- FTHG (Full-time home goals) 
+- FTAG (Full time away goals)
+- FTR (Full-time result)
+- H: Home team won
+- A: Away team won
+- D: Draw
+- HTHG (Half time home goals)
+- HTAG (Half time away goals) 
+- HTR (half time result)
+- H: Home team won
+- A: Away team won
+- D: Draw
+
+
+Improvement are ongoing, soon it is going to be posible to filter using most features
+and new functionalities.
+    """, unsafe_allow_html=True)
+
+#df = pd.read_csv("https://raw.githubusercontent.com/Roma-Rubio/LaLiga_heroku/master/LaLiga.csv",sep=",")
+
+if st.checkbox('Select this option to see all data used in the app'):
     st.write(df)
 
-
-st.subheader('Filtering dataset per team')
+st.header('HOME / AWAY / ALL RESULTS')
+st.subheader('Choose the teams you are interested on ')
 teams = st.multiselect('Pick your teams', df['HomeTeam'].unique())
 new_df = df[(df['HomeTeam'].isin(teams)) | (df['AwayTeam'].isin(teams)) ]
-if st.checkbox('Show only home matches'):
+if st.checkbox('Click to see only home matches'):
     st.write(df[(df['HomeTeam'].isin(teams))])
-if st.checkbox('Show only away matches'):
+if st.checkbox('Click to see  away matches'):
     st.write(df[(df['AwayTeam'].isin(teams))])
-if st.checkbox('Show entire dataset'):    
+if st.checkbox('Click to see all matches form the teams selected'):    
     st.write(new_df)
     
 
 
-st.subheader('Filtering dataset per season')
+st.subheader('Choose a season(optional)')
 events = st.multiselect('Pick your season', df['Season'].unique())
 new_df_season = new_df[(new_df['Season'].isin(events))]
 st.write(new_df_season)
 st.write(new_df)
 
 
-
-st.subheader('Choose a team to see their performance classification')
+st.header('TEAM PERFORMANCE')
 
 
 st.subheader('Classification of wins, losses and draws per team')
